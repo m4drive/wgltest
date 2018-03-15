@@ -9,14 +9,14 @@ WGL.Lib.Shaders.Shader=class Shader{
 	compile(gl)
 	{
 		var shader=gl.createShader(gl[this.type]);
-        gl.shaderSource(shader, this.text);
-        gl.compileShader(shader);
+		gl.shaderSource(shader, this.text);
+		gl.compileShader(shader);
 
-        if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-            alert(gl.getShaderInfoLog(shader));
-            return null;
-        }
-        return shader;
+		if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+			alert(gl.getShaderInfoLog(shader));
+			return null;
+		}
+		return shader;
 	}
 }
 WGL.Lib.Shaders.VertexShader=class VertexShader extends WGL.Lib.Shaders.Shader{
