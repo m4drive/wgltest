@@ -60,7 +60,7 @@ WGL.Instance = class Instance{
 	{
 		
 		this.gl.viewport(0, 0, this.gl.viewportWidth, this.gl.viewportHeight);
-        this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
+		this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
 		
 		
 		this.objects.forEach((x)=>{
