@@ -12,12 +12,12 @@ WGL.Instance = class Instance{
 		this.cameraSettings={
 			fieldOfViewAngle:45,
 			minDistance:0.1,
-			maxDistance:100.0
+			maxDistance:20.0
 		};
 		this.lightningSettings={
 			enabled:true,
 			directional:{
-				color:[0.8,0.8,0.8],
+				color:[0.2,0.2,0.2],
 				direction:[-1,-1,-1]
 			},
 			ambient:{
@@ -40,14 +40,14 @@ WGL.Instance = class Instance{
 		gl.viewportHeight = canvas.height;
 		
 		gl.clearColor(0.0, 0.0, 0.0, 1.0);
-		gl.enable(gl.DEPTH_TEST);
+        gl.enable(gl.DEPTH_TEST);
 		
 		return gl;
 	}
 	prepare()
 	{
 		//camera settings
-		mat4.perspective(this.cameraSettings.fieldOfViewAngle, this.gl.viewportWidth / this.gl.viewportHeight, this.cameraSettings.minDistance ,this.cameraSettings.maxDistance, this.pMatrix);
+		mat4.perspective(this.pMatrix, this.cameraSettings.fieldOfViewAngle, this.gl.viewportWidth / this.gl.viewportHeight, this.cameraSettings.minDistance ,this.cameraSettings.maxDistance);
 		//transfer camera, lightning and gl to objects
 		this.objects.forEach((x)=>{
 			x.setGL(this.gl);
@@ -60,7 +60,7 @@ WGL.Instance = class Instance{
 	{
 		
 		this.gl.viewport(0, 0, this.gl.viewportWidth, this.gl.viewportHeight);
-		this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
+        this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
 		
 		
 		this.objects.forEach((x)=>{
