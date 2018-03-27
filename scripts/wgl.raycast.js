@@ -9,7 +9,7 @@ WGL.Raycast=class Raycast{
 		
 		var mm = mat4.create();
 		mat4.identity(mm);
-		var pm=this.WGLInstance.pMatrix;
+		var pm=this.WGLInstance.camera.vpMatrix;
 		var viewport=[0,0,this.WGLInstance.gl.canvas.width,this.WGLInstance.gl.canvas.height];
 		var m = mat4.clone(mm);
 		
@@ -19,9 +19,9 @@ WGL.Raycast=class Raycast{
 		
 		var inf = [];
 		var z=1;
-		if (maxDistance<this.WGLInstance.cameraSettings.maxDistance)
+		if (maxDistance<this.WGLInstance.camera.settings.maxDistance)
 		{
-			z=maxDistance/this.WGLInstance.cameraSettings.maxDistance;
+			z=maxDistance/this.WGLInstance.camera.settings.maxDistance;
 		}
 		
 		inf[0]=(x-viewport[0])/viewport[2]*2.0-1.0;

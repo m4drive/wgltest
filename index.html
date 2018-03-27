@@ -1,4 +1,4 @@
-<html>
+﻿<html>
 <head>
 	<meta charset="utf-8">
 	<title>WebGL Test</title>
@@ -26,34 +26,78 @@
 	var container = document.getElementById("webgl_content");
 	var instance = new WGL.Instance(container);
 	
-	var obj = new WGL.Lib.Primitives.Sphere(100,100,1);
-	obj.shaders=[new WGL.Lib.Shaders.FragmentShader.Textured(),new WGL.Lib.Shaders.VertexShader.Textured()]
-	obj.textureSrc="images/tokyo.jpg";
-	obj.position=[0,0,0];
-	obj.scale=[5,5,5];
-	instance.objects.push(obj);
+	var panorama = new WGL.Lib.Primitives.Sphere(100,100,1);
+	panorama.shaders=[new WGL.Lib.Shaders.FragmentShader.Textured(),new WGL.Lib.Shaders.VertexShader.Textured()]
+	panorama.textureSrc="images/tokyo.jpg";
+	panorama.position=[0,0,0];
+	panorama.scale=[10,10,10];
+	instance.objects.push(panorama);
 	
-	var obj2 = new WGL.Lib.Primitives.Sphere(100,100,1);
-	obj2.shaders=[new WGL.Lib.Shaders.FragmentShader.Textured(),new WGL.Lib.Shaders.VertexShader.Textured()]
-	obj2.textureSrc="images/red.png";
-	obj2.position=[-1,0,-2];
-	obj2.scale=[0.1,0.1,0.1];
-	instance.objects.push(obj2);
-	
-	var obj3 = new WGL.Lib.Primitives.Sphere(100,100,1);
-	obj3.shaders=[new WGL.Lib.Shaders.FragmentShader.Textured(),new WGL.Lib.Shaders.VertexShader.Textured()]
-	obj3.textureSrc="images/green.png";
-	obj3.position=[2,1,-3];
-	obj3.scale=[0.3,0.3,0.3];
-	instance.objects.push(obj3);
-	
-	var obj4 = new WGL.Lib.Primitives.Sphere(100,100,1);
-	obj4.shaders=[new WGL.Lib.Shaders.FragmentShader.Textured(),new WGL.Lib.Shaders.VertexShader.Textured()]
-	obj4.textureSrc="images/blue.png";
-	obj4.position=[0,-1,-4];
-	obj4.scale=[0.2,0.2,0.2];
-	instance.objects.push(obj4);
-	
+
+	var img1 = new WGL.Lib.Primitives.Image();
+	img1.shaders = [new WGL.Lib.Shaders.FragmentShader.Textured(), new WGL.Lib.Shaders.VertexShader.Textured()]
+	img1.textureSrc="images/1.jpg";
+	img1.position = [0, 0, -5];
+	img1.scale = [1, 1, 1];
+	instance.objects.push(img1);
+
+	var img2 = new WGL.Lib.Primitives.Image();
+	img2.shaders = [new WGL.Lib.Shaders.FragmentShader.Textured(), new WGL.Lib.Shaders.VertexShader.Textured()]
+	img2.textureSrc="images/2.jpg";
+	img2.position = [5, 0, 0];
+	img2.rotation = [0, -90, 0];
+	img2.scale = [1, 1, 1];
+	instance.objects.push(img2);
+		
+	var img3 = new WGL.Lib.Primitives.Image();
+	img3.shaders = [new WGL.Lib.Shaders.FragmentShader.Textured(), new WGL.Lib.Shaders.VertexShader.Textured()]
+	img3.textureSrc="images/3.jpg";
+	img3.position = [0, 0, 5];
+	img3.rotation = [0, 180, 0];
+	img3.scale = [0.5, 0.5, 0.5];
+	instance.objects.push(img3);
+
+	var img4 = new WGL.Lib.Primitives.Image();
+	img4.shaders = [new WGL.Lib.Shaders.FragmentShader.Textured(), new WGL.Lib.Shaders.VertexShader.Textured()]
+	img4.textureSrc="images/4.jpg";
+	img4.position = [-5, 0, 0];
+	img4.rotation = [0, 90, 0];
+	img4.scale = [1, 1, 1];
+	instance.objects.push(img4);
+
+	var text1 = new WGL.Lib.Primitives.Text();
+	text1.shaders = [new WGL.Lib.Shaders.FragmentShader.Textured(), new WGL.Lib.Shaders.VertexShader.Textured()]
+	text1.textInfo.text="Text 1";
+	text1.position = [0, -1, -5];
+	text1.scale = [0.5, 0.5, 0.5];
+	instance.objects.push(text1);
+
+	var text2 = new WGL.Lib.Primitives.Text();
+	text2.shaders = [new WGL.Lib.Shaders.FragmentShader.Textured(), new WGL.Lib.Shaders.VertexShader.Textured()]
+	text2.textInfo.text="Text 2";
+	text2.textInfo.fillColor="#0f00ac"
+	text2.position = [5, -1, 0];
+	text2.rotation = [0, -90, 0];
+	text2.scale = [0.5, 0.5, 0.5];
+	instance.objects.push(text2);
+		
+	var text3 = new WGL.Lib.Primitives.Text();
+	text3.shaders = [new WGL.Lib.Shaders.FragmentShader.Textured(), new WGL.Lib.Shaders.VertexShader.Textured()]
+	text3.textInfo.text="Text 3";
+	text3.textInfo.fontColor="#FF0000"
+	text3.position = [0, -1, 5];
+	text3.rotation = [0, 180, 0];
+	text3.scale = [0.5, 0.5, 0.5];
+	instance.objects.push(text3);
+
+	var text4 = new WGL.Lib.Primitives.Text();
+	text4.shaders = [new WGL.Lib.Shaders.FragmentShader.Textured(), new WGL.Lib.Shaders.VertexShader.Textured()]
+	text4.textInfo.text="Text 4";
+	text4.position = [-5, -1, 0];
+	text4.rotation = [0, 90, 0];
+	text4.scale = [0.5, 0.5, 0.5];
+	instance.objects.push(text4);
+
 	instance.prepare();
 	
 	//rotation
@@ -94,9 +138,17 @@
         var newX = event.clientX;
         var newY = event.clientY;
         var deltaX = newX - lastMouseX
-		obj.rotation[1]+=deltaX/10;
+		var y=instance.camera.rotation[1]-deltaX/10;
         var deltaY = newY - lastMouseY;
-		obj.rotation[0]+=deltaY/5;
+		var x=instance.camera.rotation[0]-deltaY/10;
+
+		if (Math.abs(x)<45)
+		{
+			instance.camera.rotation[0]=x;
+		}
+		instance.camera.rotation[1]=y;
+		instance.camera.update(instance.objects);
+
         lastMouseX = newX
         lastMouseY = newY;
     }
